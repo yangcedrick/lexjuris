@@ -22,8 +22,11 @@ content:
           - name: date
             label: Date de publication
             type: date
+          - name: image
+            label: Image (facultative, moins de 500 Ko de préférence)
+            type: image
           - name: resume
-            label: Résumé (2 ou 3 lignes, affiché dans la liste)
+            label: Résumé (2 ou 3 lignes, affiché dans la liste ; sinon le début du texte est repris)
             type: text
           - name: corps
             label: Texte de l'article (laisser une ligne vide entre deux paragraphes)

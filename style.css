@@ -236,7 +236,11 @@ h3 { font-size: var(--t-l); }
 .actu h2 { font-size: var(--t-l); margin: var(--e-1) 0; }
 .actu-detail { max-width: 68ch; }
 .actu-detail h1 { font-size: var(--t-xl); margin: var(--e-2) 0; }
+.actu-detail .corps p { white-space: pre-line; } /* garde les retours à la ligne des listes */
 .actu-detail .corps p + p { margin-top: var(--e-2); }
+.actu-image { margin-bottom: var(--e-4); --decalage: 10px; }
+.photo-decalee.actu-image img { aspect-ratio: auto; } /* l'image de l'article s'affiche en entier */
+.actu-vignette { margin-bottom: var(--e-3); --decalage: 8px; }
 .vide { border: 2px dashed var(--accent-200); padding: var(--e-4) var(--e-3); text-align: center; }
 .vide h2 { font-size: var(--t-l); margin-bottom: var(--e-1); }
 .vide p { color: var(--texte-doux); max-width: 46ch; margin: 0 auto var(--e-3); }
