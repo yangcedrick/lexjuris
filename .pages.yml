@@ -1,0 +1,34 @@
+# Espace d'édition (Pages CMS — https://app.pagescms.org)
+# Maître GROGA s'y connecte avec le compte GitHub du cabinet pour écrire les actualités.
+media:
+  input: images/actualites
+  output: images/actualites
+content:
+  - name: actualites
+    label: Actualités
+    type: file
+    path: contenu/actualites.json
+    format: json
+    fields:
+      - name: articles
+        label: Articles
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre
+            type: string
+            required: true
+          - name: date
+            label: Date de publication
+            type: date
+          - name: resume
+            label: Résumé (2 ou 3 lignes, affiché dans la liste)
+            type: text
+          - name: corps
+            label: Texte de l'article (laisser une ligne vide entre deux paragraphes)
+            type: text
+          - name: publie
+            label: Publié sur le site
+            type: boolean
+            default: true

@@ -1,0 +1,262 @@
+/* LEX JURIS EXPERT & PARTNERS — style commun. N'utilise que les variables de tokens.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font: var(--corps)/var(--ligne) var(--police-texte);
+  color: var(--texte);
+  background: var(--fond);
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--action); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.conteneur { width: 100%; max-width: var(--largeur); margin: 0 auto; padding: 0 var(--e-2); }
+@media (min-width: 768px) { .conteneur { padding: 0 var(--e-4); } }
+
+.evitement { position: absolute; left: -9999px; }
+.evitement:focus { left: var(--e-2); top: var(--e-2); z-index: 100; background: var(--surface); padding: var(--e-1) var(--e-2); }
+
+/* ---------- Titres et textes ---------- */
+/* Le « & » de Playfair est calligraphique : dans le nom du cabinet, on reprend le « & » droit du logo */
+.et { font-family: var(--police-texte); font-weight: 700; font-style: normal; }
+.num, .sommaire a span { font-variant-numeric: lining-nums; height: 1em; overflow: visible; }
+h1, h2, h3 { font-family: var(--police-titre); color: var(--accent-600); line-height: 1.15; font-weight: 700; }
+h1 { font-size: var(--t-xxl); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-l); }
+.etiquette {
+  font-family: var(--police-etiquette); font-weight: 500; text-transform: uppercase;
+  letter-spacing: .16em; font-size: var(--t-xs); color: var(--texte-doux);
+}
+.bandeau {
+  display: inline-block; background: var(--gris-marque-fonce); color: var(--texte-sur-marque);
+  font-family: var(--police-etiquette); font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  padding: 4px 10px; font-size: var(--t-xs);
+}
+.chapeau { font-size: var(--t-m); color: var(--texte-doux); max-width: 60ch; }
+.texte-long { max-width: 68ch; }
+.texte-long p + p { margin-top: var(--e-2); }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 var(--e-3); border-radius: var(--rayon-petit);
+  font-family: var(--police-texte); font-weight: 700; font-size: var(--t-s); letter-spacing: .02em;
+  text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background-color .15s, color .15s;
+}
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-plein { background: var(--action); color: var(--texte-sur-marque); }
+.btn-plein:hover { background: var(--action-survol); }
+.btn-wa { background: var(--whatsapp); color: var(--texte-sur-marque); }
+.btn-wa:hover { filter: brightness(.9); }
+.btn-trait { border-color: var(--action); color: var(--action); background: transparent; }
+.btn-trait:hover { background: var(--accent-50); }
+.btn-blanc { background: var(--surface); color: var(--accent-700); }
+.btn-blanc:hover { background: var(--accent-100); }
+.boutons { display: flex; flex-wrap: wrap; gap: var(--e-2); }
+@media (max-width: 479px) { .boutons .btn { width: 100%; } }
+
+.lien-fleche {
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--action);
+  text-decoration: none; border-bottom: 2px solid var(--accent-200); padding-bottom: 2px;
+}
+.lien-fleche:hover { border-color: var(--action); }
+
+/* ---------- En-tête ---------- */
+.entete { position: sticky; top: 0; z-index: 50; background: var(--surface); border-bottom: var(--trait); }
+.entete .conteneur { display: flex; align-items: center; justify-content: space-between; gap: var(--e-2); min-height: 72px; }
+.marque-site { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--accent-600); }
+.marque-site img { width: 52px; height: 52px; }
+.marque-site > span { font-family: var(--police-titre); font-weight: 800; font-size: 1.05rem; line-height: 1.1; }
+.marque-site small { display: block; font-family: var(--police-etiquette); font-weight: 500; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--texte-doux); margin-top: 3px; }
+
+.bouton-menu {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px;
+  background: transparent; border: 2px solid var(--accent-600); border-radius: var(--rayon-petit);
+  color: var(--accent-600); font: 700 var(--t-s) var(--police-texte); cursor: pointer;
+}
+.bouton-menu svg { width: 20px; height: 20px; }
+
+.nav { display: none; }
+.nav.ouvert {
+  display: block; position: absolute; left: 0; right: 0; top: 100%;
+  background: var(--surface); border-bottom: 3px solid var(--accent-600);
+  padding: var(--e-1) var(--e-2) var(--e-3);
+}
+.nav ul { list-style: none; padding: 0; }
+.nav a {
+  display: flex; align-items: center; min-height: 52px; text-decoration: none; color: var(--texte);
+  font-weight: 600; border-bottom: var(--trait);
+}
+.nav a[aria-current="page"] { color: var(--accent-600); }
+.nav .btn { margin-top: var(--e-2); width: 100%; border-bottom: 0; color: var(--texte-sur-marque); }
+
+@media (min-width: 1060px) {
+  .bouton-menu { display: none; }
+  .nav, .nav.ouvert { display: flex; align-items: center; gap: var(--e-3); position: static; padding: 0; border: 0; }
+  .nav ul { display: flex; gap: var(--e-3); }
+  .nav a { min-height: 72px; border-bottom: 3px solid transparent; font-size: var(--t-s); }
+  .nav a:hover { color: var(--accent-600); }
+  .nav a[aria-current="page"] { border-bottom-color: var(--accent-600); }
+  .nav .btn { margin-top: 0; width: auto; min-height: 44px; }
+}
+
+/* ---------- Sections ---------- */
+.section { padding: var(--e-5) 0; }
+.section-douce { background: var(--fond-doux); border-top: var(--trait); border-bottom: var(--trait); }
+@media (min-width: 768px) { .section { padding: var(--e-6) 0; } }
+.tete-section { margin-bottom: var(--e-4); }
+.tete-section h2 { margin-top: var(--e-2); }
+.tete-section .chapeau { margin-top: var(--e-2); }
+
+/* ---------- Bandeau d'ouverture ---------- */
+.ouverture { padding: var(--e-4) 0 var(--e-5); border-bottom: var(--trait); }
+.ouverture .grille { display: grid; gap: var(--e-5); align-items: center; }
+.ouverture h1 { margin: var(--e-2) 0 var(--e-3); }
+.ouverture .chapeau { margin-bottom: var(--e-4); }
+.titre-officiel { margin-top: var(--e-4); padding-left: var(--e-2); border-left: 3px solid var(--accent-600); font-size: var(--t-s); color: var(--texte-doux); }
+.titre-officiel strong { display: block; color: var(--texte); font-size: var(--t-m); }
+@media (min-width: 900px) {
+  .ouverture { padding: var(--e-6) 0; }
+  .ouverture .grille { grid-template-columns: 1.15fr .85fr; gap: var(--e-6); }
+}
+
+/* Ouverture des pages intérieures */
+.ouverture-page { padding: var(--e-5) 0 var(--e-4); background: var(--fond-doux); border-bottom: var(--trait); }
+.ouverture-page h1 { font-size: var(--t-xl); margin: var(--e-2) 0; }
+@media (min-width: 768px) { .ouverture-page { padding: var(--e-6) 0 var(--e-5); } .ouverture-page h1 { font-size: var(--t-xxl); } }
+.fil { font-size: var(--t-s); color: var(--texte-doux); }
+.fil a { color: var(--texte-doux); }
+
+/* ---------- Photo à bloc décalé (signature) ---------- */
+.photo-decalee { position: relative; margin: 0 var(--decalage) var(--decalage) 0; }
+.photo-decalee::before {
+  content: ""; position: absolute; background: var(--accent-600);
+  inset: var(--decalage) calc(-1 * var(--decalage)) calc(-1 * var(--decalage)) var(--decalage);
+}
+.photo-decalee img { position: relative; width: 100%; height: auto; object-fit: cover; border-radius: var(--rayon-grand); }
+.photo-decalee.portrait img { aspect-ratio: 4 / 5; object-position: 55% 30%; }
+.photo-decalee.paysage img { aspect-ratio: 3 / 2; }
+@media (min-width: 768px) { .photo-decalee { --decalage: 22px; } }
+
+/* ---------- Cartes des départements ---------- */
+.departements { display: grid; gap: var(--e-5) var(--e-4); }
+@media (min-width: 640px) { .departements { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1060px) { .departements { grid-template-columns: repeat(4, 1fr); gap: var(--e-5) var(--e-3); } }
+.carte-dept { display: flex; flex-direction: column; }
+.carte-dept .photo-decalee { --decalage: 10px; }
+.carte-dept .num { font-family: var(--police-titre); font-weight: 800; font-size: 2.25rem; line-height: 1; color: var(--accent-200); margin-top: var(--e-3); }
+.carte-dept h3 { font-size: 1.3rem; margin: var(--e-1) 0; }
+.carte-dept p { color: var(--texte-doux); font-size: var(--t-s); flex: 1; }
+.carte-dept .lien-fleche { margin-top: var(--e-2); align-self: flex-start; }
+/* Téléphone : cartes compactes, photo à gauche, pour ne pas faire défiler huit grandes images */
+@media (max-width: 639px) {
+  .departements { gap: 0; border-top: var(--trait); }
+  .carte-dept { display: grid; grid-template-columns: 104px 1fr; column-gap: var(--e-2); padding: var(--e-3) 0; border-bottom: var(--trait); }
+  .carte-dept .photo-decalee { --decalage: 6px; grid-row: 1 / span 4; align-self: start; }
+  .carte-dept .photo-decalee img { aspect-ratio: 1; }
+  .carte-dept .num { font-size: 1.25rem; margin-top: 0; }
+  .carte-dept h3 { font-size: 1.15rem; margin: 4px 0; }
+  .carte-dept .lien-fleche { margin-top: var(--e-1); }
+}
+
+/* ---------- Atouts ---------- */
+.atouts { display: grid; gap: 0; border-top: 2px solid var(--accent-600); }
+@media (min-width: 768px) { .atouts { grid-template-columns: repeat(3, 1fr); } }
+.atout { padding: var(--e-3) 0; border-bottom: var(--trait); }
+@media (min-width: 768px) { .atout { padding: var(--e-4) var(--e-3) var(--e-4) 0; border-bottom: 0; } .atout + .atout { padding-left: var(--e-3); border-left: var(--trait); } }
+.atout h3 { font-size: 1.25rem; margin-bottom: var(--e-1); }
+.atout p { color: var(--texte-doux); }
+
+/* ---------- Devise ---------- */
+.devise { background: var(--fond-marque); color: var(--texte-sur-marque); padding: var(--e-5) 0; text-align: center; }
+.devise blockquote { font-family: var(--police-titre); font-style: italic; font-weight: 600; font-size: var(--t-xl); line-height: 1.25; max-width: 24ch; margin: 0 auto; }
+.devise p { color: var(--accent-100); margin-top: var(--e-2); font-size: var(--t-m); }
+@media (min-width: 768px) { .devise { padding: var(--e-6) 0; } .devise blockquote { max-width: 30ch; } }
+
+/* ---------- Deux colonnes ---------- */
+.deux-col { display: grid; gap: var(--e-5); align-items: center; }
+@media (min-width: 900px) { .deux-col { grid-template-columns: 1fr 1fr; gap: var(--e-6); } .deux-col.inverse > :first-child { order: 2; } }
+
+.liste-coche { list-style: none; padding: 0; margin-top: var(--e-3); }
+.liste-coche li { position: relative; padding: 10px 0 10px 32px; border-bottom: var(--trait); }
+.liste-coche li::before {
+  content: ""; position: absolute; left: 4px; top: 18px; width: 12px; height: 7px;
+  border-left: 3px solid var(--accent-600); border-bottom: 3px solid var(--accent-600); transform: rotate(-45deg);
+}
+
+/* ---------- Page Expertises ---------- */
+.sommaire { display: grid; gap: 0; list-style: none; padding: 0; counter-reset: s; border-top: var(--trait); }
+@media (min-width: 640px) { .sommaire { grid-template-columns: repeat(2, 1fr); column-gap: var(--e-4); } }
+.sommaire a { display: flex; align-items: baseline; gap: 14px; min-height: 52px; padding: 12px 0; border-bottom: var(--trait); text-decoration: none; color: var(--texte); font-weight: 600; }
+.sommaire a span { font-family: var(--police-titre); font-weight: 800; color: var(--accent-300); min-width: 2ch; }
+.sommaire a:hover { color: var(--accent-600); }
+
+.expertise { padding: var(--e-5) 0; border-top: var(--trait); scroll-margin-top: 80px; }
+@media (min-width: 768px) { .expertise { padding: var(--e-6) 0; } }
+.expertise .num { font-family: var(--police-titre); font-weight: 800; font-size: 3rem; line-height: 1; color: var(--accent-200); }
+.expertise h2 { margin: var(--e-1) 0 var(--e-1); }
+.expertise .en { font-style: italic; color: var(--texte-doux); margin-bottom: var(--e-3); }
+.expertise .texte-long { margin-bottom: var(--e-3); }
+
+.familles { display: grid; gap: var(--e-3); margin-top: var(--e-4); }
+@media (min-width: 768px) { .familles { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1060px) { .familles { grid-template-columns: repeat(3, 1fr); } }
+.famille { border-top: 3px solid var(--accent-600); padding-top: var(--e-2); }
+.famille h3 { font-size: 1.15rem; margin-bottom: var(--e-1); }
+.famille ul { padding-left: 1.1em; color: var(--texte-doux); }
+.famille li + li { margin-top: 4px; }
+.famille li::marker { color: var(--accent-400); }
+
+/* ---------- Appel à l'action ---------- */
+.appel { background: var(--accent-950); color: var(--texte-sur-marque); padding: var(--e-5) 0; }
+.appel h2 { color: var(--texte-sur-marque); }
+.appel p { color: var(--accent-100); margin: var(--e-2) 0 var(--e-4); max-width: 56ch; }
+@media (min-width: 768px) { .appel { padding: var(--e-6) 0; } }
+
+/* ---------- Contact ---------- */
+.coordonnees { display: grid; gap: 0; border-top: 2px solid var(--accent-600); }
+.coord { display: grid; grid-template-columns: 44px 1fr; gap: var(--e-2); padding: var(--e-3) 0; border-bottom: var(--trait); }
+.coord svg { width: 28px; height: 28px; color: var(--accent-600); margin-top: 2px; }
+.coord .etiquette { margin-bottom: 4px; }
+.coord a { font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+.coord a:hover { text-decoration: underline; }
+.horaires { border-collapse: collapse; width: 100%; max-width: 420px; }
+.horaires td { padding: 6px 0; border-bottom: var(--trait); }
+.horaires td:last-child { text-align: right; font-weight: 600; }
+
+/* ---------- Actualités ---------- */
+.liste-actus { display: grid; gap: var(--e-4); }
+@media (min-width: 768px) { .liste-actus { grid-template-columns: repeat(2, 1fr); } }
+.actu { border-top: 3px solid var(--accent-600); padding-top: var(--e-2); }
+.actu time { font-size: var(--t-s); color: var(--texte-doux); }
+.actu h2 { font-size: var(--t-l); margin: var(--e-1) 0; }
+.actu-detail { max-width: 68ch; }
+.actu-detail h1 { font-size: var(--t-xl); margin: var(--e-2) 0; }
+.actu-detail .corps p + p { margin-top: var(--e-2); }
+.vide { border: 2px dashed var(--accent-200); padding: var(--e-4) var(--e-3); text-align: center; }
+.vide h2 { font-size: var(--t-l); margin-bottom: var(--e-1); }
+.vide p { color: var(--texte-doux); max-width: 46ch; margin: 0 auto var(--e-3); }
+
+/* ---------- Pied de page ---------- */
+.pied { background: var(--accent-900); color: var(--accent-100); padding: var(--e-5) 0 var(--e-3); font-size: var(--t-s); }
+.pied .grille { display: grid; gap: var(--e-4); }
+@media (min-width: 768px) { .pied .grille { grid-template-columns: 1.4fr 1fr 1fr; } }
+.pied h2 { font-family: var(--police-etiquette); font-weight: 500; font-size: var(--t-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--accent-200); margin-bottom: var(--e-2); }
+.pied a { color: var(--texte-sur-marque); text-decoration: none; }
+.pied a:hover { text-decoration: underline; }
+.pied ul { list-style: none; padding: 0; }
+.pied li { padding: 4px 0; }
+.pied .nom { font-family: var(--police-titre); font-weight: 800; font-size: 1.25rem; color: var(--texte-sur-marque); margin-bottom: var(--e-1); }
+.pied .bas { margin-top: var(--e-4); padding-top: var(--e-3); border-top: 1px solid var(--accent-700); display: flex; flex-wrap: wrap; gap: var(--e-1) var(--e-3); justify-content: space-between; color: var(--accent-200); }
+
+/* ---------- Bouton WhatsApp flottant (téléphone) ---------- */
+.wa-flottant {
+  position: fixed; right: 16px; bottom: 16px; z-index: 40; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--whatsapp); color: var(--texte-sur-marque); display: grid; place-items: center;
+}
+.wa-flottant svg { width: 30px; height: 30px; }
+@media (min-width: 1060px) { .wa-flottant { display: none; } }
